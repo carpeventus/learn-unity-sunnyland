@@ -16,19 +16,17 @@ public abstract class AbstractInteractive : MonoBehaviour {
     }
     
     protected void Update() {
-        if (Trigger() && collision) {
-            trigger = true;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other) {
-        collision = true;
-        if (canInteractive && trigger) {
+        if (canInteractive && Trigger() && collision) {
+            WhenTrigger();
             if (TriggerOnlyOnce()) {
                 canInteractive = false;
             }
-            WhenTrigger();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        collision = true;
+        
     }
 
     private void OnTriggerExit2D(Collider2D other) {

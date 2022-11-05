@@ -22,8 +22,10 @@ public class OneWaySwitch : AbstractInteractive
     protected override void WhenTrigger() {
         var stateAfter = FlipSwitch();
         anim.SetBool("switch", stateAfter);
-        player.PlayOneShot(switched);
-        block.Trigger();
+        if (open) {
+            player.PlayOneShot(switched);
+            block.Trigger();
+        }
     }
 
     private bool FlipSwitch() {
