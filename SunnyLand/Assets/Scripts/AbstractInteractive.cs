@@ -8,8 +8,6 @@ public abstract class AbstractInteractive : MonoBehaviour {
     private bool canInteractive;
     // 当前是否在碰撞（触发）
     private bool collision;
-    // 按下按键且在触发中，那么可以进行按键后的动作
-    private bool trigger;
 
     protected virtual void Start() {
         canInteractive = true;
